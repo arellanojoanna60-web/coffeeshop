@@ -1,90 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Bean Haven Coffee</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roastify Coffee Shop</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
-    <div class="logo">Bean Haven ☕</div>
-    <nav id="nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
+  <div class="logo">Roastify ☕</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="header-icons">
+    <span onclick="openCart()">🛒 (<span id="cart-count">0</span>)</span>
+    <span>👤 Login</span>
+  </div>
 </header>
 
 <!-- HERO -->
 <section class="hero" id="home">
-    <div class="hero-content">
-        <h1>Freshly Brewed Coffee</h1>
-        <p>Start your day with the perfect cup.</p>
-        <button onclick="scrollToSection('menu')">View Menu</button>
-    </div>
+  <h1>Freshly Roasted Premium Coffee</h1>
+  <p>Crafted for true coffee lovers.</p>
+  <button onclick="scrollToShop()">Shop Now</button>
+</section>
+
+<!-- FEATURED -->
+<section class="featured">
+  <h2>Best Sellers</h2>
+  <div class="products" id="featured-products"></div>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+  <h2>Shop Coffee</h2>
+  <input type="text" id="search" placeholder="Search coffee..." onkeyup="filterProducts()">
+  <select id="category" onchange="filterProducts()">
+    <option value="all">All Categories</option>
+    <option value="Beans">Beans</option>
+    <option value="Ground">Ground</option>
+    <option value="Cold Brew">Cold Brew</option>
+  </select>
+  <div class="products" id="shop-products"></div>
+</section>
+
+<!-- CART -->
+<section id="cart-section" class="hidden">
+  <h2>Your Cart 🛒</h2>
+  <div id="cart-items"></div>
+  <h3>Total: $<span id="cart-total">0</span></h3>
+  <button onclick="openCheckout()">Proceed to Checkout</button>
+</section>
+
+<!-- CHECKOUT -->
+<section id="checkout" class="hidden">
+  <h2>Checkout 💳</h2>
+  <form onsubmit="placeOrder(event)">
+    <input type="text" placeholder="Full Name" required>
+    <input type="text" placeholder="Address" required>
+    <input type="text" placeholder="Contact Number" required>
+    <select required>
+      <option value="">Select Payment</option>
+      <option>Credit Card</option>
+      <option>PayPal</option>
+      <option>GCash</option>
+    </select>
+    <button type="submit">Place Order</button>
+  </form>
 </section>
 
 <!-- ABOUT -->
-<section class="about" id="about">
-    <h2>About Us</h2>
-    <p>
-        At Bean Haven, we serve premium coffee crafted from ethically sourced beans.
-        Our cozy atmosphere makes it the perfect place to relax, work, or meet friends.
-    </p>
+<section id="about">
+  <h2>About Roastify</h2>
+  <p>We source ethically grown beans from Colombia and Ethiopia. 
+  Our roasting process ensures bold flavor and smooth finish. 
+  Our mission is to deliver happiness in every cup.</p>
 </section>
 
-<!-- MENU -->
-<section class="menu" id="menu">
-    <h2>Our Menu</h2>
-    <div class="menu-grid">
-        <div class="menu-card">
-            <h3>Espresso</h3>
-            <p>Rich & bold espresso shot.</p>
-            <span>$3.00</span>
-        </div>
-        <div class="menu-card">
-            <h3>Latte</h3>
-            <p>Creamy milk with espresso.</p>
-            <span>$4.50</span>
-        </div>
-        <div class="menu-card">
-            <h3>Cappuccino</h3>
-            <p>Foamy perfection blend.</p>
-            <span>$4.00</span>
-        </div>
-        <div class="menu-card">
-            <h3>Mocha</h3>
-            <p>Chocolate infused delight.</p>
-            <span>$5.00</span>
-        </div>
-    </div>
+<!-- REVIEWS -->
+<section class="reviews">
+  <h2>Customer Reviews ⭐</h2>
+  <div class="review">
+    <p>⭐⭐⭐⭐⭐</p>
+    <p>"Best coffee I've ever tasted!"</p>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Subscribe</h2>
+  <input type="email" placeholder="Enter your email">
+  <button>Subscribe</button>
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <form id="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-    </form>
+<section id="contact">
+  <h2>Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Send</button>
+  </form>
+  <p>Email: support@roastify.com</p>
+  <p>Phone: +63 912 345 6789</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <p>© 2026 Bean Haven Coffee | All Rights Reserved</p>
+  <p>Quick Links | Privacy Policy | Terms</p>
+  <p>© 2026 Roastify Coffee</p>
 </footer>
 
-<!-- JS -->
 <script src="script.js"></script>
-
 </body>
 </html>
